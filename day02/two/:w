@@ -28,7 +28,8 @@ lowerBound = 0
 upperBound = 2
 
 isInBound :: Coordinate -> Bool
-isInBound (Coordinate x y) = isJust $ numpad !! x !! y
+isInBound (Coordinate x y) =
+  isJust (input !! x !! y)
 
 rawMove :: Heading -> Coordinate -> Coordinate
 rawMove North (Coordinate x y) = Coordinate (x - 1) y
@@ -38,10 +39,9 @@ rawMove West (Coordinate x y) = Coordinate x (y - 1)
 
 move :: Heading -> Coordinate -> Coordinate
 move heading location =
-  let new = rawMove heading location
-  in if isInBound new
-       then new
-       else location
+  let newLocation = rawMove heading location
+  in if isInBound newLocation then newLocation
+     else oldLocation
 
 initial = Coordinate 3 1
 
@@ -62,7 +62,7 @@ digits :: Coordinate -> [[Char]] -> [Coordinate]
 digits coord strings = tail $ scanl digit coord strings
 
 toDigit :: Coordinate -> String
-toDigit (Coordinate x y) = fromJust $ numpad !! x !! y
+toDigit (Coordinate x y) = show $ numpad !! x !! y
 
 code :: [Coordinate] -> String
 code coords = foldr (++) "" $ map toDigit coords
