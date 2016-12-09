@@ -1,0 +1,57 @@
+import Data.String.Utils
+import Data.List
+
+data Pixel = On | Off deriving (Eq, Show)
+data Axis = X | Y deriving (Eq, Show)
+data Instruction = Rect Int Int    |
+                   Rotate Axis Int Int deriving (Eq, Show)
+
+asInt :: String -> Int
+asInt s = read s :: Int
+
+count :: Pixel -> Int
+count On = 1
+count Off = 0
+
+rotate :: Int -> [a] -> [a]
+rotate n list = chopped ++ shifted
+  where (shifted, chopped) = splitAt (length list - n) list
+
+parse :: String -> Instruction
+parse s = case split " " s of
+            ("rotate" : "row"    : ('y':'=':a) : "by" : b : []) ->
+              Rotate Y (asInt a) (asInt b)
+            ("rotate" : "column" : ('x':'=':a) : "by" : b : []) ->
+              Rotate X (asInt a) (asInt b)
+            ("rect"   : xAndY                             : []) ->
+              case split "x" xAndY of
+                (x : "x" : y : []) -> Rect (asInt x) (asInt y)
+
+sumGrid = sum . map sum
+mapGrid f = map (map f)
+
+apply :: Instruction -> [[Pixel]] -> [[Pixel]]
+apply (Rect     a b) pixels = newTop ++ bottom
+  where (top, bottom) = splitAt b pixels
+        newTop = map ((replicate a On ++) . drop a) top
+apply (Rotate X a b) pixels = transpose $ apply (Rotate Y a b) $ transpose pixels
+apply (Rotate Y a b) pixels = begin ++ [transformed] ++ end
+  where (begin, row, end) = breakAround a pixels
+        transformed = rotate b row
+
+breakAround :: Int -> [a] -> ([a], a, [a])
+breakAround a b xs = (begin, middle, end)
+  where (begin, rest) = splitAt a xs
+        (middle, end) = splitAt (b - a + 1) $ rest
+
+totalLit :: String -> Int
+totalLit input = sumGrid $ mapGrid count final
+  where commands = map parse $ lines input
+        final = foldr apply start commands
+
+start = replicate 6 $ replicate 50 Off
+
+main = do input <- readFile "../input"
+          putStrLn "Total Chars of Input:"
+          let 
+          print $ totalLit input
