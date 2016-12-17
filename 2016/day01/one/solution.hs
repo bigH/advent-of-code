@@ -26,15 +26,6 @@ inputs = ["R3", "L5", "R2", "L1", "L2", "R5", "L2", "R2", "L2", "L2", "L1", "R2"
          ["L3", "L2", "R2", "R2", "R2", "L1", "L4", "R3", "R2", "R2", "L3", "R2", "L3", "L2"] ++
          ["R4", "L2", "R3", "L4", "R5", "R4", "R1", "R5", "R3"]
 
-findFinalDestination :: Position -> [[Char]] -> Position
-findFinalDestination pos [] = pos
-findFinalDestination (Position heading location) (head : tail) =
-  findFinalDestination (Position newHeading newLocation) tail
-    where instruction = parseInput head
-          (direction, distance) = instruction
-          newHeading = turn direction heading
-          newLocation = move distance newHeading location
-
 turn :: Direction -> Heading -> Heading
 turn L = left
 turn R = right
@@ -76,5 +67,10 @@ asDirection d = error $ "Invalid Direction: `" ++ d ++ "`"
 distance :: Coordinate -> Int
 distance (Coordinate x y) = abs x + abs y
 
+applyInput :: Position -> (Direction, Int) -> Position
+applyInput (Position heading coord) (t, d) = Position newHeading newCoordinate
+  where newHeading = (turn t heading)
+        newCoordinate = move d newHeading coord
+
 main = do putStrLn "Final Destination:"
-          print $ distance $ coordinate $ findFinalDestination initial inputs
+          print $ distance $ coordinate $ foldl applyInput initial $ map parseInput inputs
