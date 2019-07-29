@@ -153,3 +153,19 @@ path = "day18/one/solution.rs"
 [[bin]]
 name = "d182"
 path = "day18/two/solution.rs"
+
+[[bin]]
+name = "d191"
+path = "day19/one/solution.rs"
+
+[[bin]]
+name = "d192"
+path = "day19/two/solution.rs"
+
+[[bin]]
+name = "d201"
+path = "day20/one/solution.rs"
+
+[[bin]]
+name = "d202"
+path = "day20/two/solution.rs"
