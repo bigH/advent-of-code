@@ -1,0 +1,155 @@
+[package]
+name = "advent-of-code-2017"
+version = "0.1.0"
+authors = ["Hiren Hiranandani <hiren@stripe.com>"]
+edition = "2018"
+
+[dependencies]
+regex = "1"
+itertools = "0.8"
+im = "13.0"
+intrusive-collections = "0.8"
+
+[[bin]]
+name = "d011"
+path = "day01/one/solution.rs"
+
+[[bin]]
+name = "d012"
+path = "day01/two/solution.rs"
+
+[[bin]]
+name = "d021"
+path = "day02/one/solution.rs"
+
+[[bin]]
+name = "d022"
+path = "day02/two/solution.rs"
+
+[[bin]]
+name = "d031"
+path = "day03/one/solution.rs"
+
+[[bin]]
+name = "d032"
+path = "day03/two/solution.rs"
+
+[[bin]]
+name = "d041"
+path = "day04/one/solution.rs"
+
+[[bin]]
+name = "d042"
+path = "day04/two/solution.rs"
+
+[[bin]]
+name = "d051"
+path = "day05/one/solution.rs"
+
+[[bin]]
+name = "d052"
+path = "day05/two/solution.rs"
+
+[[bin]]
+name = "d061"
+path = "day06/one/solution.rs"
+
+[[bin]]
+name = "d062"
+path = "day06/two/solution.rs"
+
+[[bin]]
+name = "d071"
+path = "day07/one/solution.rs"
+
+[[bin]]
+name = "d072"
+path = "day07/two/solution.rs"
+
+[[bin]]
+name = "d081"
+path = "day08/one/solution.rs"
+
+[[bin]]
+name = "d082"
+path = "day08/two/solution.rs"
+
+[[bin]]
+name = "d091"
+path = "day09/one/solution.rs"
+
+[[bin]]
+name = "d092"
+path = "day09/two/solution.rs"
+
+[[bin]]
+name = "d101"
+path = "day10/one/solution.rs"
+
+[[bin]]
+name = "d102"
+path = "day10/two/solution.rs"
+
+[[bin]]
+name = "d111"
+path = "day11/one/solution.rs"
+
+[[bin]]
+name = "d112"
+path = "day11/two/solution.rs"
+
+[[bin]]
+name = "d121"
+path = "day12/one/solution.rs"
+
+[[bin]]
+name = "d122"
+path = "day12/two/solution.rs"
+
+[[bin]]
+name = "d131"
+path = "day13/one/solution.rs"
+
+[[bin]]
+name = "d132"
+path = "day13/two/solution.rs"
+
+[[bin]]
+name = "d141"
+path = "day14/one/solution.rs"
+
+[[bin]]
+name = "d142"
+path = "day14/two/solution.rs"
+
+[[bin]]
+name = "d151"
+path = "day15/one/solution.rs"
+
+[[bin]]
+name = "d152"
+path = "day15/two/solution.rs"
+
+[[bin]]
+name = "d161"
+path = "day16/one/solution.rs"
+
+[[bin]]
+name = "d162"
+path = "day16/two/solution.rs"
+
+[[bin]]
+name = "d171"
+path = "day17/one/solution.rs"
+
+[[bin]]
+name = "d172"
+path = "day17/two/solution.rs"
+
+[[bin]]
+name = "d181"
+path = "day18/one/solution.rs"
+
+[[bin]]
+name = "d182"
+path = "day18/two/solution.rs"
