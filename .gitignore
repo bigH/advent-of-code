@@ -1,2 +1,6 @@
 out/
 target/
+.bloop
+.bsp
+.metals
+
